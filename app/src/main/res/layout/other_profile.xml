@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+   xmlns:tools="http://schemas.android.com/tools"
+   android:layout_width="match_parent"
+   android:layout_height="match_parent"
+   android:id="@+id/OtherProfile"
+   android:background="#438072"
+   xmlns:app="http://schemas.android.com/apk/res-auto"
+   tools:context=".Profiles.OtherProfile">
+
+  <ScrollView
+     android:layout_width="match_parent"
+     android:layout_height="match_parent"
+>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+       android:layout_width="match_parent"
+       android:layout_height="match_parent">
+
+
+      <ProgressBar
+         android:id="@+id/ProgressBar"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         app:layout_constraintTop_toTopOf="parent"
+         app:layout_constraintBottom_toBottomOf="parent"
+         app:layout_constraintStart_toStartOf="parent"
+         app:layout_constraintEnd_toEndOf="parent"
+         app:layout_constraintVertical_bias=".3"/>
+
+      <ImageView
+         android:id="@+id/coverPhoto"
+         android:layout_width="match_parent"
+         android:layout_height="0dp"
+         android:elevation="20dp"
+         android:scaleType="centerCrop"
+         android:src="@drawable/safiul1"
+         app:layout_constraintDimensionRatio="7:4"
+         app:layout_constraintStart_toStartOf="parent"
+         app:layout_constraintTop_toTopOf="parent" />
+
+      <de.hdodenhof.circleimageview.CircleImageView
+         android:id="@+id/profileImage"
+         android:layout_width="150dp"
+         android:layout_height="150dp"
+         android:elevation="20dp"
+         android:scaleType="centerCrop"
+         android:src="@drawable/saiful4"
+         app:civ_border_color="#478069"
+         app:civ_border_width="2dp"
+         app:layout_constraintBottom_toBottomOf="@id/coverPhoto"
+         app:layout_constraintEnd_toEndOf="@+id/coverPhoto"
+         app:layout_constraintHorizontal_bias=".1"
+         app:layout_constraintStart_toStartOf="@+id/coverPhoto"
+         app:layout_constraintTop_toBottomOf="@+id/coverPhoto" />
+
+      <androidx.cardview.widget.CardView
+       android:id="@+id/ChatLayout"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_marginEnd="-15dp"
+         app:cardCornerRadius="@dimen/margin40"
+         app:cardElevation="20dp"
+         android:clickable="true"
+         android:layout_marginTop="@dimen/margin20"
+       app:layout_constraintTop_toBottomOf="@id/profileName"
+         app:layout_constraintStart_toEndOf="@id/profileImage"
+
+         android:focusable="true">
+
+        <androidx.appcompat.widget.AppCompatButton
+           android:id="@+id/ChatButton"
+           android:layout_width="35dp"
+           android:layout_height="35dp"
+           android:layout_margin="7dp"
+           android:background="@drawable/chat"
+           android:elevation="@dimen/margin20"
+           android:text=" " />
+
+      </androidx.cardview.widget.CardView>
+
+
+      <TextView
+         android:id="@+id/profileName"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_marginStart="10dp"
+         android:layout_marginTop="20dp"
+         android:layout_marginEnd="5dp"
+         android:ellipsize="end"
+         android:fontFamily="@font/merriweather_italic"
+         android:singleLine="true"
+         android:text="User Name"
+         android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
+         app:layout_constraintEnd_toEndOf="parent"
+         app:layout_constraintStart_toEndOf="@id/profileImage"
+         app:layout_constraintTop_toBottomOf="@id/coverPhoto" />
+
+
+      <ImageView
+         android:id="@+id/emailIcon"
+         android:layout_width="20dp"
+         android:layout_height="20dp"
+         android:layout_margin="20dp"
+         android:src="@drawable/email"
+         app:layout_constraintStart_toStartOf="parent"
+         app:layout_constraintTop_toBottomOf="@id/ChatLayout" />
+
+
+      <TextView
+         android:id="@+id/profileEmail"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_margin="10dp"
+         android:singleLine="true"
+         android:text="User Email"
+         android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
+         app:layout_constraintBottom_toBottomOf="@id/emailIcon"
+         app:layout_constraintStart_toEndOf="@id/emailIcon"
+         app:layout_constraintTop_toTopOf="@id/emailIcon" />
+
+
+      <ImageView
+         android:id="@+id/aboutIcon"
+         android:layout_width="20dp"
+         android:layout_height="20dp"
+         android:layout_margin="20dp"
+         android:src="@drawable/horizontaloption"
+
+         app:layout_constraintStart_toEndOf="@id/emailIcon"
+         app:layout_constraintTop_toBottomOf="@+id/emailIcon" />
+
+
+      <TextView
+         android:id="@+id/about"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_margin="10dp"
+         android:singleLine="true"
+         android:text="about"
+         android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
+         app:layout_constraintBottom_toBottomOf="@id/aboutIcon"
+         app:layout_constraintStart_toEndOf="@id/aboutIcon"
+         app:layout_constraintTop_toTopOf="@id/aboutIcon" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+  </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

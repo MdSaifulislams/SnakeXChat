@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+   xmlns:app="http://schemas.android.com/apk/res-auto"
+   xmlns:tools="http://schemas.android.com/tools"
+   android:layout_width="match_parent"
+   android:layout_height="match_parent"
+   tools:context=".CreateAccount.CreateAccount">
+  <ScrollView
+     android:layout_width="match_parent"
+     android:layout_height="match_parent"
+    >
+
+     <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+  <ImageView
+     android:id="@+id/snakex_logo"
+     android:layout_width="100dp"
+     android:layout_height="100dp"
+     app:layout_constraintTop_toTopOf="parent"
+     app:layout_constraintLeft_toLeftOf="parent"
+     android:src="@mipmap/ic_launcher_foreground" />
+
+
+  <de.hdodenhof.circleimageview.CircleImageView
+     android:id="@+id/ProfilePhoto"
+     android:layout_width="200dp"
+     android:layout_height="200dp"
+     android:layout_marginTop="@dimen/margin30"
+     app:layout_constraintTop_toTopOf="parent"
+     app:layout_constraintLeft_toLeftOf="parent"
+     app:layout_constraintRight_toRightOf="parent"
+     android:src="@drawable/profile_icon" />
+
+
+       <androidx.cardview.widget.CardView
+          android:id="@+id/AddProfilePhoto"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          app:cardCornerRadius="@dimen/margin40"
+          app:cardElevation="20dp"
+          android:clickable="true"
+          app:layout_constraintBottom_toBottomOf="@id/ProfilePhoto"
+          app:layout_constraintEnd_toEndOf="@id/ProfilePhoto"
+          app:layout_constraintTop_toTopOf="@id/ProfilePhoto"
+          app:layout_constraintVertical_bias=".95"
+          android:focusable="true">
+
+         <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/EditButton"
+            android:layout_width="30dp"
+            android:layout_height="@dimen/margin30"
+            android:layout_margin="7dp"
+            android:background="@drawable/plus_icon"
+            android:elevation="@dimen/margin20"
+            android:text=" " />
+
+       </androidx.cardview.widget.CardView>
+
+  <TextView
+     android:id="@+id/welcomeText"
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content"
+     android:text="Register as a new user"
+     android:textAlignment="center"
+     android:textSize="20sp"
+     app:layout_constraintStart_toEndOf="parent"
+     app:layout_constraintStart_toStartOf="parent"
+     app:layout_constraintTop_toBottomOf="@id/ProfilePhoto" />
+
+
+
+
+  <com.google.android.material.textfield.TextInputLayout
+     android:id="@+id/first_name_layout"
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:layout_marginTop="@dimen/margin10"
+     android:fontFamily="@font/merriweather_italic"
+     android:layout_gravity="center"
+     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+     app:layout_constraintTop_toBottomOf="@id/welcomeText"
+     app:layout_constraintStart_toStartOf="parent"
+     app:layout_constraintEnd_toEndOf="parent">
+
+
+    <com.google.android.material.textfield.TextInputEditText
+       android:id="@+id/name"
+       android:layout_width="wrap_content"
+       android:minWidth="250dp"
+       android:layout_height="wrap_content"
+       android:textSize="@dimen/text_Primary"
+       android:maxWidth="320dp"
+       android:inputType="text"
+       android:drawableStart="@drawable/man_icon"
+       android:hint="Name"
+       />
+
+  </com.google.android.material.textfield.TextInputLayout>
+
+
+
+
+
+  <com.google.android.material.textfield.TextInputLayout
+     android:id="@+id/email_layout"
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:fontFamily="@font/merriweather_italic"
+     android:layout_gravity="center"
+     android:layout_marginTop="@dimen/margin20"
+     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+     app:layout_constraintTop_toBottomOf="@id/first_name_layout"
+     app:layout_constraintStart_toStartOf="parent"
+     app:layout_constraintEnd_toEndOf="parent">
+
+
+    <com.google.android.material.textfield.TextInputEditText
+       android:id="@+id/email"
+       android:layout_width="wrap_content"
+       android:minWidth="250dp"
+       android:maxWidth="320dp"
+       android:layout_height="wrap_content"
+       android:textSize="@dimen/text_Primary"
+       android:drawableStart="@drawable/email_icon"
+       android:inputType="textEmailAddress"
+       android:hint="Email"
+       />
+
+  </com.google.android.material.textfield.TextInputLayout>
+
+
+
+
+  <com.google.android.material.textfield.TextInputLayout
+     android:id="@+id/password_layout"
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:layout_marginTop="20dp"
+     app:endIconMode="password_toggle"
+     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+     app:layout_constraintTop_toBottomOf="@id/email_layout"
+     app:layout_constraintStart_toStartOf="parent"
+     app:layout_constraintEnd_toEndOf="parent">
+
+
+    <com.google.android.material.textfield.TextInputEditText
+       android:id="@+id/password"
+       android:layout_width="250dp"
+       android:layout_height="wrap_content"
+       android:textSize="@dimen/text_Primary"
+       android:inputType="textPassword"
+       android:hint="Password"
+       />
+
+  </com.google.android.material.textfield.TextInputLayout>
+
+
+
+
+
+
+  <Button
+     android:id="@+id/CreateAccountButton"
+     android:layout_width="300dp"
+     android:layout_height="wrap_content"
+     android:layout_marginTop="40dp"
+     android:background="@drawable/edit_shape"
+     android:fontFamily="@font/merriweather_italic"
+     android:padding="5dp"
+     android:text="Create account"
+     android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
+     app:layout_constraintEnd_toEndOf="parent"
+     app:layout_constraintHorizontal_bias="0.504"
+     app:layout_constraintStart_toStartOf="parent"
+     app:layout_constraintTop_toBottomOf="@id/password_layout" />
+
+
+       <ProgressBar
+          android:id="@+id/ProgressBar"
+          android:accessibilityPaneTitle="Uploding..."
+          android:visibility="gone"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          app:layout_constraintTop_toTopOf="@id/CreateAccountButton"
+          app:layout_constraintBottom_toBottomOf="@id/CreateAccountButton"
+          app:layout_constraintStart_toStartOf="@id/CreateAccountButton"
+          app:layout_constraintEnd_toEndOf="@id/CreateAccountButton"/>
+
+  <ProgressBar
+     android:id="@+id/progressbar"
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:visibility="gone"
+    app:layout_constraintTop_toTopOf="@id/CreateAccountButton"
+    app:layout_constraintBottom_toBottomOf="@id/CreateAccountButton"
+    app:layout_constraintEnd_toEndOf="@id/CreateAccountButton"
+    app:layout_constraintStart_toStartOf="@id/CreateAccountButton"/>
+
+  <androidx.appcompat.widget.AppCompatButton
+     android:id="@+id/goLoginButton"
+     android:layout_width="300dp"
+     android:layout_height="wrap_content"
+     android:background="@drawable/edit_shape"
+     android:layout_marginTop="30dp"
+     android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
+     android:text="I have alrady an account"
+     app:layout_constraintEnd_toEndOf="parent"
+     app:layout_constraintStart_toStartOf="parent"
+     app:layout_constraintTop_toBottomOf="@id/CreateAccountButton"
+     />
+
+     </androidx.constraintlayout.widget.ConstraintLayout>
+  </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

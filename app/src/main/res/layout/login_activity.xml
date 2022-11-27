@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+   xmlns:app="http://schemas.android.com/apk/res-auto"
+   xmlns:tools="http://schemas.android.com/tools"
+   android:layout_width="match_parent"
+   android:layout_height="match_parent"
+   tools:context=".LoginActivity.Login">
+
+
+
+
+
+
+
+
+
+
+
+
+  <ImageView
+     android:id="@+id/snakex_logo"
+     android:layout_width="250dp"
+     android:layout_height="250dp"
+     app:layout_constraintTop_toTopOf="parent"
+     app:layout_constraintLeft_toLeftOf="parent"
+     app:layout_constraintRight_toRightOf="parent"
+     android:src="@mipmap/ic_launcher_foreground" />
+
+
+
+
+  <TextView
+     android:id="@+id/welcomeText"
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content"
+     android:text="Login as an user"
+
+     android:textAlignment="center"
+     android:textSize="20sp"
+     app:layout_constraintStart_toEndOf="parent"
+     app:layout_constraintStart_toStartOf="parent"
+     app:layout_constraintTop_toBottomOf="@id/snakex_logo" />
+
+
+
+
+
+
+
+
+  <com.google.android.material.textfield.TextInputLayout
+     android:id="@+id/email_layout"
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:layout_marginTop="@dimen/margin20"
+     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+     app:layout_constraintTop_toBottomOf="@id/welcomeText"
+     app:layout_constraintStart_toStartOf="parent"
+     app:layout_constraintEnd_toEndOf="parent">
+
+
+    <com.google.android.material.textfield.TextInputEditText
+       android:id="@+id/email"
+       android:layout_width="wrap_content"
+       android:minWidth="250dp"
+       android:layout_height="wrap_content"
+       android:drawableStart="@drawable/email_icon"
+       android:maxWidth="300dp"
+       android:hint="Email"
+       android:inputType="textEmailAddress"
+       android:textSize="@dimen/text_Primary" />
+
+  </com.google.android.material.textfield.TextInputLayout>
+
+
+
+
+  <com.google.android.material.textfield.TextInputLayout
+     android:id="@+id/password_layout"
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:layout_marginTop="20dp"
+     app:endIconMode="password_toggle"
+     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+     app:layout_constraintTop_toBottomOf="@id/email_layout"
+     app:layout_constraintStart_toStartOf="parent"
+     app:layout_constraintEnd_toEndOf="parent">
+
+
+    <com.google.android.material.textfield.TextInputEditText
+       android:id="@+id/password"
+       android:layout_width="250dp"
+       android:layout_height="wrap_content"
+       android:textSize="@dimen/text_Primary"
+       android:inputType="textPassword"
+       android:hint="Password"
+       />
+
+  </com.google.android.material.textfield.TextInputLayout>
+
+
+
+
+
+
+  <Button
+     android:id="@+id/loginButton"
+     android:layout_width="300dp"
+     android:layout_height="wrap_content"
+     android:layout_marginTop="70dp"
+     android:background="@drawable/edit_shape"
+     android:fontFamily="@font/merriweather_italic"
+     android:padding="5dp"
+     android:text="login"
+     android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
+     app:layout_constraintEnd_toEndOf="parent"
+     app:layout_constraintHorizontal_bias="0.504"
+     app:layout_constraintStart_toStartOf="parent"
+     app:layout_constraintTop_toBottomOf="@id/password_layout" />
+
+
+
+  <ProgressBar
+     android:id="@+id/progressbar"
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:visibility="gone"
+     app:layout_constraintTop_toTopOf="@id/loginButton"
+     app:layout_constraintBottom_toBottomOf="@id/loginButton"
+     app:layout_constraintEnd_toEndOf="@id/loginButton"
+     app:layout_constraintStart_toStartOf="@id/loginButton"/>
+
+  <androidx.appcompat.widget.AppCompatButton
+     android:id="@+id/goCreateAccontuButton"
+     android:layout_width="300dp"
+     android:layout_height="wrap_content"
+     android:background="@drawable/edit_shape"
+     android:layout_marginTop="50dp"
+     android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
+     android:text="Create a Account"
+     app:layout_constraintEnd_toEndOf="parent"
+     app:layout_constraintStart_toStartOf="parent"
+     app:layout_constraintTop_toBottomOf="@id/loginButton"
+     />
+
+
+
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

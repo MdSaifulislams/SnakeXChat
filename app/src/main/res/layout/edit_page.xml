@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+   xmlns:app="http://schemas.android.com/apk/res-auto"
+   xmlns:tools="http://schemas.android.com/tools"
+   android:layout_width="match_parent"
+   android:layout_height="match_parent"
+   tools:context=".EditInfo.EditPage">
+
+
+  <ScrollView
+
+     android:layout_width="match_parent"
+     android:layout_height="match_parent"
+     android:visibility="visible"
+     tools:layout_editor_absoluteX="0dp"
+     tools:layout_editor_absoluteY="0dp">
+
+<androidx.constraintlayout.widget.ConstraintLayout
+   android:layout_width="match_parent"
+   android:layout_height="match_parent">
+
+
+      <ImageView
+         android:id="@+id/coverPhoto"
+         android:layout_width="match_parent"
+         android:layout_height="0dp"
+         android:elevation="20dp"
+         android:scaleType="centerCrop"
+         android:src="@drawable/multi_user"
+         app:layout_constraintDimensionRatio="7:4"
+         app:layout_constraintStart_toStartOf="parent"
+         app:layout_constraintTop_toTopOf="parent" />
+
+
+
+
+  <androidx.cardview.widget.CardView
+
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     app:cardCornerRadius="@dimen/margin40"
+     app:cardElevation="20dp"
+     android:clickable="true"
+     android:layout_margin="@dimen/margin20"
+     app:layout_constraintTop_toTopOf="parent"
+     app:layout_constraintStart_toStartOf="parent"
+     android:focusable="true">
+
+    <androidx.appcompat.widget.AppCompatButton
+       android:id="@+id/Back"
+       android:layout_width="30dp"
+       android:layout_height="@dimen/margin30"
+       android:layout_margin="7dp"
+       android:background="@drawable/iosback"
+       android:elevation="@dimen/margin20"
+       android:text=" " />
+
+  </androidx.cardview.widget.CardView>
+
+
+      <androidx.cardview.widget.CardView
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+
+         app:cardCornerRadius="@dimen/margin40"
+         app:cardElevation="20dp"
+         android:clickable="true"
+         app:layout_constraintTop_toBottomOf="@+id/coverPhoto"
+         app:layout_constraintBottom_toBottomOf="@id/coverPhoto"
+         app:layout_constraintEnd_toEndOf="@id/coverPhoto"
+         app:layout_constraintStart_toStartOf="parent"
+         app:layout_constraintHorizontal_bias=".9"
+         android:focusable="true">
+
+        <androidx.appcompat.widget.AppCompatButton
+           android:id="@+id/coverPhotoEditButton"
+           android:layout_width="30dp"
+           android:layout_height="@dimen/margin30"
+           android:layout_margin="7dp"
+           android:background="@drawable/plus_icon"
+           android:elevation="@dimen/margin20"
+           android:text=" " />
+
+      </androidx.cardview.widget.CardView>
+
+
+
+
+      <de.hdodenhof.circleimageview.CircleImageView
+         android:id="@+id/profileImage"
+         android:layout_width="150dp"
+         android:layout_height="150dp"
+         android:elevation="20dp"
+         android:scaleType="centerCrop"
+         android:src="@drawable/man_icon"
+         app:civ_border_color="#222121"
+         app:civ_border_width="2dp"
+         app:layout_constraintBottom_toBottomOf="@id/coverPhoto"
+         app:layout_constraintEnd_toEndOf="@+id/coverPhoto"
+         app:layout_constraintHorizontal_bias=".1"
+         app:layout_constraintStart_toStartOf="@+id/coverPhoto"
+         app:layout_constraintTop_toBottomOf="@+id/coverPhoto" />
+
+
+
+
+
+      <androidx.cardview.widget.CardView
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         app:cardCornerRadius="@dimen/margin40"
+         app:cardElevation="20dp"
+         android:clickable="true"
+         app:layout_constraintBottom_toBottomOf="@id/profileImage"
+         app:layout_constraintEnd_toEndOf="@id/profileImage"
+         app:layout_constraintTop_toTopOf="@id/profileImage"
+         app:layout_constraintVertical_bias=".95"
+         android:focusable="true">
+
+        <androidx.appcompat.widget.AppCompatButton
+           android:id="@+id/ProfileEditButton"
+           android:layout_width="30dp"
+           android:layout_height="@dimen/margin30"
+           android:layout_margin="7dp"
+           android:background="@drawable/plus_icon"
+           android:elevation="@dimen/margin20"
+           android:text=" " />
+
+      </androidx.cardview.widget.CardView>
+
+
+      <com.google.android.material.textfield.TextInputEditText
+         android:id="@+id/profileName"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:minWidth="100dp"
+         android:layout_marginTop="20dp"
+         android:ellipsize="end"
+         android:fontFamily="@font/merriweather_italic"
+         android:singleLine="true"
+         android:text="User Name"
+         android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
+         app:layout_constraintEnd_toEndOf="parent"
+         app:layout_constraintStart_toEndOf="@id/profileImage"
+         app:layout_constraintTop_toBottomOf="@id/coverPhoto" />
+
+
+      <ImageView
+         android:id="@+id/emailIcon"
+         android:layout_width="@dimen/margin20"
+         android:layout_height="@dimen/margin20"
+         android:layout_margin="20dp"
+         android:src="@drawable/email"
+         app:layout_constraintStart_toStartOf="parent"
+         app:layout_constraintTop_toBottomOf="@+id/profileImage" />
+
+
+      <com.google.android.material.textfield.TextInputEditText
+         android:id="@+id/profileEmail"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:minWidth="100dp"
+         android:layout_margin="10dp"
+         android:singleLine="true"
+         android:text="User Email"
+         android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
+         app:layout_constraintBottom_toBottomOf="@id/emailIcon"
+         app:layout_constraintStart_toEndOf="@id/emailIcon"
+         app:layout_constraintTop_toTopOf="@id/emailIcon" />
+
+
+
+
+
+      <androidx.appcompat.widget.AppCompatButton
+         android:id="@+id/save"
+         android:layout_width="200dp"
+         android:layout_height="wrap_content"
+         android:background="@drawable/edit_shape"
+         android:text="Save"
+         android:drawableEnd="@drawable/right_site"
+         android:layout_marginTop="100dp"
+         app:layout_constraintTop_toBottomOf="@id/emailIcon"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+
+
+      <ProgressBar
+         android:id="@+id/ProgressBar"
+         android:accessibilityPaneTitle="Uploding..."
+         android:visibility="gone"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/save"
+        app:layout_constraintBottom_toBottomOf="@id/save"
+        app:layout_constraintStart_toStartOf="@id/save"
+        app:layout_constraintEnd_toEndOf="@id/save"/>
+
+
+
+
+
+    <androidx.appcompat.widget.AppCompatButton
+       android:id="@+id/logout"
+       android:layout_width="150dp"
+       android:padding="@dimen/padding10"
+       android:layout_height="wrap_content"
+       android:text="Logout"
+       android:layout_marginTop="@dimen/margin20"
+       app:cardCornerRadius="@dimen/margin20"
+       android:drawableEnd="@drawable/right_site"
+       app:layout_constraintTop_toBottomOf="@id/save"
+       app:layout_constraintBottom_toBottomOf="parent"
+       app:layout_constraintStart_toStartOf="parent"
+       app:layout_constraintEnd_toEndOf="parent"
+       />
+
+
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+  </ScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

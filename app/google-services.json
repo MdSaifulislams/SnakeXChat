@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1002607159399",
+    "project_id": "snakex-chat",
+    "storage_bucket": "snakex-chat.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1002607159399:android:14878fd579656e502fccc2",
+        "android_client_info": {
+          "package_name": "snakex.chat.com"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1002607159399-3vr0fa5e02q2fntj341op4r7pe3ibfc6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBZnSLI_f6Lnft37LufGw5MuULVpdme8Uk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1002607159399-3vr0fa5e02q2fntj341op4r7pe3ibfc6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
