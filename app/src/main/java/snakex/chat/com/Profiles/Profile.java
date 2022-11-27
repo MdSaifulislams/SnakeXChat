@@ -57,7 +57,7 @@ public View onCreateView(LayoutInflater inflater, ViewGroup container,
   Progress_Dialog();
 	 initialise();
 	 getData();
-	 Click();
+
 
 
 	 return binding.getRoot();
@@ -143,6 +143,7 @@ private void EditButtonClick() {
 
 private void getData() {
 
+
 	 databaseReference.addValueEventListener(new ValueEventListener() {
 			@Override
 			public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -155,7 +156,9 @@ private void getData() {
 						setData();
 				 }else{
 
-						Toast.makeText(getActivity(), "You haven not any data", Toast.LENGTH_SHORT).show();
+
+						progressDialog.dismiss();
+						Methods.ShowAlertDialog(getActivity(),"You haven not any data","Warning !");
 				 }
 			}
 
@@ -163,7 +166,7 @@ private void getData() {
 			public void onCancelled(@NonNull DatabaseError error) {
 
 				 Methods.ShowAlertDialog(getActivity(), error.getMessage(), "Warning !");
-
+				 progressDialog.dismiss();
 			}
 	 });
 
@@ -188,6 +191,8 @@ private void setData() {
 	 }
 	 binding.profileName.setText(Name);
 	 binding.profileEmail.setText(Email);
+	 progressDialog.dismiss();
+	 Click();
 }
 
 
@@ -204,8 +209,9 @@ private void initialise() {
 
 private void Progress_Dialog() {
 	 progressDialog = new ProgressDialog(getActivity());
-	 progressDialog.setIcon(R.drawable.edit);
+
 	 progressDialog.setTitle("Loading...");
+	 progressDialog.show();
 }
 
 }
