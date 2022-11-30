@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+   android:layout_width="wrap_content"
+   android:layout_height="wrap_content"
+   android:layout_marginEnd="80dp"
+   android:layout_marginTop="8dp"
+   android:layout_marginBottom="8dp"
+   android:layout_marginStart="@dimen/padding5"
+   android:id="@+id/left_chat_recycler_view"
+   xmlns:app="http://schemas.android.com/apk/res-auto"
+   android:background="@drawable/left_message_background">
+
+
+  <TextView
+     android:id="@+id/message"
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:fontFamily="@font/roboto"
+     android:includeFontPadding="false"
+     android:padding="5dp"
+     android:text="saiful"
+     android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
+     app:layout_constraintStart_toStartOf="parent"
+     app:layout_constraintBottom_toBottomOf="parent"
+     app:layout_constraintEnd_toEndOf="parent"
+     app:layout_constraintTop_toTopOf="parent" />
+
+
+
+
+  <TextView
+     android:id="@+id/time"
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:fontFamily="@font/roboto"
+     android:includeFontPadding="false"
+     android:text="saiful"
+     android:layout_marginHorizontal="@dimen/padding20"
+     android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
+     app:layout_constraintBottom_toBottomOf="parent"
+     app:layout_constraintHorizontal_bias=".9"
+     app:layout_constraintEnd_toEndOf="parent"
+     app:layout_constraintStart_toStartOf="parent"
+     app:layout_constraintTop_toBottomOf="@id/message" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

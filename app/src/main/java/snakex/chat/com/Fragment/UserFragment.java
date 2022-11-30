@@ -69,7 +69,7 @@ private void getData() {
 	 databaseReference.addValueEventListener(new ValueEventListener() {
 			@Override
 			public void onDataChange(@NonNull DataSnapshot snapshot) {
-     modelList.clear();
+      modelList.clear();
 				for( DataSnapshot dataSnapshot : snapshot.getChildren()) {
 					 Model model = dataSnapshot.getValue(Model.class);
          modelList.add(model);
