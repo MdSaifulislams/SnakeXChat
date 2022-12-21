@@ -1,6 +1,5 @@
 package snakex.chat.com.Profiles;
 
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,10 +11,7 @@ import androidx.fragment.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import com.google.android.material.resources.TextAppearance;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -27,7 +23,7 @@ import com.squareup.picasso.Picasso;
 
 import snakex.chat.com.EditInfo.EditPage;
 import snakex.chat.com.Methods;
-import snakex.chat.com.ModelClass.Model;
+import snakex.chat.com.ModelClass.UserDataModel;
 import snakex.chat.com.R;
 import snakex.chat.com.databinding.ProfileBinding;
 
@@ -42,7 +38,7 @@ String UserId
 		, Name
 		,Email
 		,ProfilePhotoUrl,CoverPhotoUrl;
-Model modelData;
+UserDataModel userDataModelData;
 ProgressDialog progressDialog;
 
 
@@ -147,9 +143,9 @@ private void getData() {
 	 databaseReference.addValueEventListener(new ValueEventListener() {
 			@Override
 			public void onDataChange(@NonNull DataSnapshot snapshot) {
-				 modelData = snapshot.getValue(Model.class);
+				 userDataModelData = snapshot.getValue(UserDataModel.class);
 
-				 if (modelData!=null) {
+				 if (userDataModelData !=null) {
 
 
 						takeDataModel();
@@ -174,10 +170,10 @@ private void getData() {
 }
 
 private void takeDataModel() {
-	 Name = modelData.getName();
-	 Email =modelData.getUserEmail();
-	 ProfilePhotoUrl = modelData.getProfilePhotoUrl();
-	 CoverPhotoUrl = modelData.getCoverPhotoUrl();
+	 Name = userDataModelData.getName();
+	 Email = userDataModelData.getUserEmail();
+	 ProfilePhotoUrl = userDataModelData.getProfilePhotoUrl();
+	 CoverPhotoUrl = userDataModelData.getCoverPhotoUrl();
 
 }
 
@@ -185,7 +181,7 @@ private void takeDataModel() {
 //-----------------------------------------------------
 
 private void setData() {
-	 if (modelData!=null) {
+	 if (userDataModelData !=null) {
 			Picasso.get().load(ProfilePhotoUrl).placeholder(R.drawable.man_icon).into(binding.profileImage);
 			Picasso.get().load(CoverPhotoUrl).placeholder(R.drawable.multi_user).into(binding.coverPhoto);
 	 }

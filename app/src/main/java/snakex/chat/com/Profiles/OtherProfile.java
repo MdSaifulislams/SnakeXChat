@@ -5,9 +5,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,14 +15,12 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
-import snakex.chat.com.Chats.ChatWithOne;
 import snakex.chat.com.Chats.ChatWithOneFriend;
 import snakex.chat.com.Methods;
-import snakex.chat.com.ModelClass.Model;
+import snakex.chat.com.ModelClass.UserDataModel;
 import snakex.chat.com.R;
 import snakex.chat.com.databinding.OtherProfileBinding;
 
@@ -39,7 +35,7 @@ String UserId
 		,UserEmail
 		,ProfilePhotoUrl
 		,CoverPhotoUrl;
-Model model;
+UserDataModel userDataModel;
 
 
 @Override
@@ -125,7 +121,7 @@ private void getDataToDataBase() {
 	 databaseReference.child(UserId).addValueEventListener(new ValueEventListener() {
 			@Override
 			public void onDataChange(@NonNull DataSnapshot snapshot) {
-		    model = snapshot.getValue(Model.class);
+		    userDataModel = snapshot.getValue(UserDataModel.class);
 				 getModelData();
 
 			}
@@ -141,10 +137,10 @@ private void getDataToDataBase() {
 //-------------------------------------
 
 private void getModelData() {
-	 UserName = model.getName();
-	 UserEmail = model.getUserEmail();
-	 ProfilePhotoUrl = model.getProfilePhotoUrl();
-	 CoverPhotoUrl = model.getCoverPhotoUrl();
+	 UserName = userDataModel.getName();
+	 UserEmail = userDataModel.getUserEmail();
+	 ProfilePhotoUrl = userDataModel.getProfilePhotoUrl();
+	 CoverPhotoUrl = userDataModel.getCoverPhotoUrl();
 
 
 	 setData();

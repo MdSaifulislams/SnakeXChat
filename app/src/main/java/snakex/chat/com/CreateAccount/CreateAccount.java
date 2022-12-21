@@ -86,8 +86,7 @@ private void AddProfilePhoto() {
 			Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
 			intent.setType("image/*");
 			startActivityForResult(intent, 111);
-//			GetPhotoToDevice();
-			Toast.makeText(this, "click", Toast.LENGTH_SHORT).show();
+
 	 });
 
 }
@@ -201,8 +200,11 @@ private void CreateAccountVerified() {
 					if (ProfilePhotoUri != null) {
 						 UploadCompleteProfilePhoto = false;
 						 setProfilePhotoDataBase();
+						 CheckPhotoUpload();
+					}else{
+						 SuccessComplete();
 					}
-					CheckPhotoUpload();
+
 
 			 })
 			 .addOnFailureListener(e -> {

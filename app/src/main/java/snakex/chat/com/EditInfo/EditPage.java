@@ -24,13 +24,13 @@ import java.util.Map;
 
 import snakex.chat.com.LoginActivity.Login;
 import snakex.chat.com.Methods;
-import snakex.chat.com.ModelClass.Model;
+import snakex.chat.com.ModelClass.UserDataModel;
 import snakex.chat.com.R;
 import snakex.chat.com.databinding.EditPageBinding;
 
 public class EditPage extends AppCompatActivity {
 EditPageBinding binding;
-Model model;
+UserDataModel userDataModel;
 DatabaseReference databaseReference;
 StorageReference storageReference;
 FirebaseAuth firebaseAuth;
@@ -344,9 +344,9 @@ private void getData() {
 			@Override
 			public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-				 model = snapshot.getValue(Model.class);
+				 userDataModel = snapshot.getValue(UserDataModel.class);
 
-				 if (model!=null) {
+				 if (userDataModel !=null) {
 
 						getDataModel();
 				 }else{
@@ -369,10 +369,10 @@ private void getData() {
 //------------------------------------
 private void getDataModel() {
 
-	 Name = model.getName();
-	 Email = model.getUserEmail();
-	 ProfilePhotoUrl  = model.getProfilePhotoUrl();
-	 CoverPhotoUrl = model.getCoverPhotoUrl();
+	 Name = userDataModel.getName();
+	 Email = userDataModel.getUserEmail();
+	 ProfilePhotoUrl  = userDataModel.getProfilePhotoUrl();
+	 CoverPhotoUrl = userDataModel.getCoverPhotoUrl();
 
 	 setData();
 
@@ -404,7 +404,7 @@ binding.profileEmail.setText(Email);
 
 
 private void initialise() {
-//	 model = new Model();
+//	 userDataModel = new UserDataModel();
 	 intent = getIntent();
 	 firebaseAuth = FirebaseAuth.getInstance();
 

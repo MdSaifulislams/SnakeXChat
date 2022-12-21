@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
@@ -22,7 +23,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageViewHolder> {
    String MyUserId;
 	 final  int leftUri =1;
 	 final  int rightUri =2;
-
+ViewGroup parent ;
 
 
 
@@ -35,25 +36,28 @@ public MessageAdapter(Context context, List<MessagesModel> messageList, String m
 
 
 
-
 @NonNull
 @Override
 public MessageViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
 
-
+  this.parent = parent;
 	 if (viewType == rightUri){
 
-			view = LayoutInflater.from(context).inflate(R.layout.right_chat_recycler_view,parent,false);
+
+			viewDiglar(R.layout.right_chat_recycler_view );
 	 }else {
 
 			view = LayoutInflater.from(context).inflate(R.layout.left_chat_recycler_view,parent,false);
+			viewDiglar(R.layout.left_chat_recycler_view);
 	 }
 
 	 return new MessageViewHolder(view);
 
 
 }
+
+
 
 
 //-------------------------------------------------------
@@ -87,6 +91,14 @@ public int getItemViewType(int position) {
 			return leftUri;
 	 }
 
+
+}
+
+
+
+
+private void viewDiglar(int itemView) {
+	 view = LayoutInflater.from(context).inflate(itemView,parent,false);
 
 }
 }

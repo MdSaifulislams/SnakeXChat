@@ -24,7 +24,7 @@ import java.util.List;
 
 import snakex.chat.com.Adapters.AllUserViewAdapter;
 import snakex.chat.com.Methods;
-import snakex.chat.com.ModelClass.Model;
+import snakex.chat.com.ModelClass.UserDataModel;
 
 import snakex.chat.com.databinding.UserFragmentBinding;
 
@@ -41,7 +41,7 @@ FirebaseUser firebaseUser;
 DatabaseReference databaseReference;
 
 String UserId;
-List<Model> modelList;
+List<UserDataModel> userDataModelList;
 
 
 @Override
@@ -69,16 +69,16 @@ private void getData() {
 	 databaseReference.addValueEventListener(new ValueEventListener() {
 			@Override
 			public void onDataChange(@NonNull DataSnapshot snapshot) {
-      modelList.clear();
+      userDataModelList.clear();
 				for( DataSnapshot dataSnapshot : snapshot.getChildren()) {
-					 Model model = dataSnapshot.getValue(Model.class);
-         modelList.add(model);
+					 UserDataModel userDataModel = dataSnapshot.getValue(UserDataModel.class);
+         userDataModelList.add(userDataModel);
 
 
 				}
 
         Methods.progressbarHide(binding.ProgressBar,null);
-				 AllUserViewAdapter adapter = new AllUserViewAdapter(modelList,getActivity(),getActivity());
+				 AllUserViewAdapter adapter = new AllUserViewAdapter(userDataModelList,getActivity(),getActivity());
 				binding.recyclerView.setAdapter(adapter);
 
 
@@ -98,7 +98,7 @@ private void getData() {
 //--------------------------------
 
 private void initialise() {
-	 modelList = new ArrayList<>();
+	 userDataModelList = new ArrayList<>();
 
 	 firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 	 databaseReference = FirebaseDatabase.getInstance().getReference("user");

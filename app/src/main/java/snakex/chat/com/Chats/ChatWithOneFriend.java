@@ -2,11 +2,12 @@ package snakex.chat.com.Chats;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -24,7 +25,8 @@ import java.util.List;
 import snakex.chat.com.Adapters.MessageAdapter;
 import snakex.chat.com.Methods;
 import snakex.chat.com.ModelClass.MessagesModel;
-import snakex.chat.com.ModelClass.Model;
+import snakex.chat.com.ModelClass.UserDataModel;
+import snakex.chat.com.Profiles.OtherProfile;
 import snakex.chat.com.R;
 import snakex.chat.com.databinding.ChatWithOneBinding;
 
@@ -51,7 +53,7 @@ String OtherUserId
 
 
 
-Model model;
+UserDataModel userDataModel;
 MessagesModel messagesModelUplod ,messagesModelReceived ;
 List<MessagesModel> MessageList;
 
@@ -85,9 +87,13 @@ private void Click() {
    BackClick();
 	 messageInputClick();
 	 sentButtonClick();
+   ProfilePhotoClick();
+	 OtherUserNameClick();
 
 
 }
+
+
 
 private void messageInputClick() {
 
@@ -110,6 +116,47 @@ private void BackClick() {
  });
 
 }
+
+
+
+//--------------------------------------
+
+private void ProfilePhotoClick() {
+
+	 binding.UserProfileImage.setOnClickListener(view -> {
+	    GoOtherProfile();
+ });
+}
+
+
+
+//--------------------------------------------------
+
+
+private void OtherUserNameClick() {
+	 binding.Name.setOnClickListener(view -> {
+			GoOtherProfile();
+	 });
+
+}
+
+//-------------------------------------------------
+
+private void GoOtherProfile() {
+
+
+	 Fragment fragment = new OtherProfile();
+
+	 Bundle bundle = new Bundle();
+	 bundle.putString("UserId",OtherUserId);
+
+	 fragment.setArguments(bundle);
+
+	 FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+	 fragmentTransaction.replace(R.id.ChatWithOne,fragment).commit();
+}
+
+//----------------------------------------------------
 
 private void sentButtonClick() {
 
@@ -136,13 +183,18 @@ private void sentMessageData() {
  messagesModelUplod = new MessagesModel(MyUserId,OtherUserId,MessageMils,messageText,messageKey);
 
 
- databaseReferencesend.child("Message").child(MyUserId).child(OtherUserId).setValue(messagesModelUplod)
+// databaseReferencesend.child("Message").child(MyUserId).child(OtherUserId).setValue(messagesModelUplod)
+//		 .addOnCompleteListener(task -> {
+//
+//				binding.MessageText.setText("");
+// });
+
+
+ databaseReferencesend.child("Message").child(MessageMils).setValue(messagesModelUplod)
 		 .addOnCompleteListener(task -> {
 
 				binding.MessageText.setText("");
  });
-
-
 }
 
 
@@ -152,29 +204,59 @@ private void sentMessageData() {
 
 
 private void getMessageData() {
-	 databaseReferencesend.child("Message").child(MyUserId).child(OtherUserId).addValueEventListener(new ValueEventListener() {
+//	 databaseReferencesend.child("Message").child(MyUserId).child(OtherUserId).addValueEventListener(new ValueEventListener() {
+//			@Override
+//			public void onDataChange(@NonNull DataSnapshot snapshot) {
+//
+//				 messagesModelReceived = snapshot.getValue(MessagesModel.class);
+//
+//				 if (messagesModelReceived!=null) {
+//						MessageList.clear();
+//						MessageList.add(messagesModelReceived);
+//
+//						setAdapter();
+//				 }
+//			}
+//
+//			@Override
+//			public void onCancelled(@NonNull DatabaseError error) {
+//
+//			}
+//	 });
+
+
+
+	 databaseReferencesend.child("Message").addValueEventListener(new ValueEventListener() {
 			@Override
 			public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-				 messagesModelReceived = snapshot.getValue(MessagesModel.class);
-
-				 if (messagesModelReceived!=null) {
 						MessageList.clear();
-						MessageList.add(messagesModelReceived);
+				 for (DataSnapshot dataSnapshot : snapshot.getChildren()){
 
+				 MessagesModel messagesModel=	dataSnapshot.getValue(MessagesModel.class);
+
+
+						if ((messagesModel.getSenderId().equals(MyUserId) && messagesModel.getReceiverId().equals(OtherUserId))
+								||
+								(messagesModel.getSenderId().equals(OtherUserId) && messagesModel.getReceiverId().equals(MyUserId))){
+
+							 MessageList.add(messagesModel);
+
+
+
+				 }
+				 }
+				 if (MessageList.size()!=0) {
 						setAdapter();
 				 }
 			}
-
-
-
-
 
 			@Override
 			public void onCancelled(@NonNull DatabaseError error) {
 
 			}
 	 });
+
 }
 
 ///-------------------------------------
@@ -199,7 +281,7 @@ private void getOtherDataToDataBase() {
 	 databaseReference.child(OtherUserId).addValueEventListener(new ValueEventListener() {
 			@Override
 			public void onDataChange(@NonNull DataSnapshot snapshot) {
-				 model = snapshot.getValue(Model.class);
+				 userDataModel = snapshot.getValue(UserDataModel.class);
 				 getModelData();
 
 			}
@@ -216,8 +298,8 @@ private void getOtherDataToDataBase() {
 //-----------------------------------------
 
 private void getModelData() {
-	 UserName = model.getName();
-	 ProfilePhotoUrl = model.getProfilePhotoUrl();
+	 UserName = userDataModel.getName();
+	 ProfilePhotoUrl = userDataModel.getProfilePhotoUrl();
 
 	 setData();
 

@@ -26,12 +26,13 @@
      android:fontFamily="@font/roboto"
      android:includeFontPadding="false"
      android:padding="5dp"
+     android:layout_marginHorizontal="@dimen/padding20"
      android:text="saiful"
      android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
      app:layout_constraintStart_toStartOf="parent"
      app:layout_constraintBottom_toBottomOf="parent"
      app:layout_constraintEnd_toEndOf="parent"
-     app:layout_constraintTop_toTopOf="parent" />
+      />
 
 
 
@@ -42,11 +43,11 @@
      android:layout_height="wrap_content"
      android:fontFamily="@font/roboto"
      android:includeFontPadding="false"
-     android:text="saiful"
+     android:text=""
      android:layout_marginHorizontal="@dimen/padding20"
      android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
      app:layout_constraintBottom_toBottomOf="parent"
-     app:layout_constraintHorizontal_bias=".9"
+     app:layout_constraintHorizontal_bias=".1"
      app:layout_constraintEnd_toEndOf="parent"
      app:layout_constraintStart_toStartOf="parent"
      app:layout_constraintTop_toBottomOf="@id/message" />

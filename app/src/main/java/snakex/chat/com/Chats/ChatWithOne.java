@@ -18,7 +18,7 @@ import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
 import snakex.chat.com.Methods;
-import snakex.chat.com.ModelClass.Model;
+import snakex.chat.com.ModelClass.UserDataModel;
 import snakex.chat.com.R;
 import snakex.chat.com.databinding.ChatWithOneBinding;
 
@@ -34,7 +34,7 @@ String UserId
 		,UserEmail
 		,ProfilePhotoUrl
 		,CoverPhotoUrl;
-Model model;
+UserDataModel userDataModel;
 
 
 @Override
@@ -62,7 +62,7 @@ private void getDataToDataBase() {
 	 databaseReference.child(UserId).addValueEventListener(new ValueEventListener() {
 			@Override
 			public void onDataChange(@NonNull DataSnapshot snapshot) {
-				 model = snapshot.getValue(Model.class);
+				 userDataModel = snapshot.getValue(UserDataModel.class);
 				 getModelData();
 
 			}
@@ -79,8 +79,8 @@ private void getDataToDataBase() {
 //-----------------------------------------
 
 private void getModelData() {
-	 UserName = model.getName();
-	 ProfilePhotoUrl = model.getProfilePhotoUrl();
+	 UserName = userDataModel.getName();
+	 ProfilePhotoUrl = userDataModel.getProfilePhotoUrl();
 
 	 setData();
 

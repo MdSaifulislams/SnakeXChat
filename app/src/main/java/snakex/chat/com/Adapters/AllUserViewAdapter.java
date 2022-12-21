@@ -17,25 +17,23 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-import snakex.chat.com.Chats.ChatFragment;
-import snakex.chat.com.Chats.ChatWithOne;
 import snakex.chat.com.Chats.ChatWithOneFriend;
-import snakex.chat.com.ModelClass.Model;
+import snakex.chat.com.ModelClass.UserDataModel;
 import snakex.chat.com.Profiles.OtherProfile;
 import snakex.chat.com.R;
 import snakex.chat.com.ViewHolders.AllUserViewHolder;
 
 public class AllUserViewAdapter extends RecyclerView.Adapter<AllUserViewHolder> {
 
-	 List<Model>  ModelList;
+	 List<UserDataModel> userDataModelList;
 	 Context context;
 	 FragmentActivity fragmentActivity;
-   Model  OneUserModel;
+   UserDataModel oneUserUserDataModel;
 
 	 View view;
 
-public AllUserViewAdapter(List<Model> modelList, Context context, FragmentActivity fragmentActivity) {
-	 ModelList = modelList;
+public AllUserViewAdapter(List<UserDataModel> userDataModelList, Context context, FragmentActivity fragmentActivity) {
+	 this.userDataModelList = userDataModelList;
 	 this.context = fragmentActivity;
 	 this.fragmentActivity = fragmentActivity;
 
@@ -53,11 +51,11 @@ public AllUserViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewT
 @Override
 public void onBindViewHolder(@NonNull AllUserViewHolder holder, int position) {
 
-	OneUserModel = ModelList.get(position);
+	oneUserUserDataModel = userDataModelList.get(position);
 
-	 holder.Name.setText(OneUserModel.getName());
+	 holder.Name.setText(oneUserUserDataModel.getName());
 
-	 Picasso.get().load(OneUserModel.getProfilePhotoUrl()).error(R.drawable.profile_icon).placeholder(R.drawable.man_icon).into(holder.profileImage);
+	 Picasso.get().load(oneUserUserDataModel.getProfilePhotoUrl()).error(R.drawable.profile_icon).placeholder(R.drawable.man_icon).into(holder.profileImage);
 
 	 ItemClick(holder,position);
 
@@ -75,7 +73,7 @@ public void onBindViewHolder(@NonNull AllUserViewHolder holder, int position) {
 
 @Override
 public int getItemCount() {
-	 return ModelList.size();
+	 return userDataModelList.size();
 }
 
 //----------------------------------------------------------
@@ -89,7 +87,7 @@ private void ItemClick(AllUserViewHolder holder, int position) {
 			Fragment fragment = new OtherProfile();
 
 			Bundle bundle = new Bundle();
-			bundle.putString("UserId",ModelList.get(position).getUserId());
+			bundle.putString("UserId", userDataModelList.get(position).getUserId());
 
      fragment.setArguments(bundle);
 
@@ -107,7 +105,7 @@ private void ChatClick(AllUserViewHolder holder, int position) {
 //			Fragment fragment = new ChatWithOne();
 //
 //			Bundle bundle = new Bundle();
-//			bundle.putString("UserId",ModelList.get(position).getUserId());
+//			bundle.putString("UserId",userDataModelList.get(position).getUserId());
 //
 //			fragment.setArguments(bundle);
 //
@@ -116,7 +114,7 @@ private void ChatClick(AllUserViewHolder holder, int position) {
 
 
 			Intent intent = new Intent(context, ChatWithOneFriend.class);
-			intent.putExtra("UserId",ModelList.get(position).getUserId());
+			intent.putExtra("UserId", userDataModelList.get(position).getUserId());
 			context.startActivity(intent);
 	 });
 
